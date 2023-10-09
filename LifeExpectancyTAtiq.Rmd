@@ -1,0 +1,172 @@
+---
+title: "Life Expectancy"
+output: html_notebook
+---
+
+Installing Packages
+```{r}
+#install.packages("tidyverse")
+```
+
+Setting Libraries
+```{r}
+library(tidyverse)
+```
+
+Loading in the Dataset
+```{r}
+life <- read.csv("life expectancy.csv")
+life
+```
+
+Getting the summary statistics 
+```{r}
+summary(life)
+```
+
+# Hypothesis 1: Impact of Expenditure on Health and Education on Life Expectancy
+```{r}
+hyp1 <- ggplot(life, aes(x = Health.Expenditure.., y = Education.Expenditure.., color = Life.Expectancy.World.Bank)) +
+  geom_point() +
+  labs(x = "Health Expenditure (% of GDP)",
+       y = "Education Expenditure (% of GDP)",
+       title = "Impact of Government Expenditure on Life Expectancy",
+       color = "Life Expectancy")
+hyp1
+```
+With Trend Line
+```{r}
+hyp1trend <- ggplot(life, aes(x = Health.Expenditure.., y = Education.Expenditure.., color = Life.Expectancy.World.Bank)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, aes(group = 1)) +
+  labs(x = "Health Expenditure (% of GDP)",
+       y = "Education Expenditure (% of GDP)",
+       title = "Impact of Government Expenditure on Life Expectancy",
+       color = "Life Expectancy")
+hyp1trend
+```
+
+Life Expectancy by Income Group.
+This graph is mostly here to show the change in time of life expectancy among income brackets, to give more nuance
+to the above graph.
+```{r}
+hyp1income <- ggplot(life, aes(x = Year, y = Life.Expectancy.World.Bank, group = IncomeGroup, color = IncomeGroup)) +
+  geom_line() +
+  facet_wrap(~IncomeGroup, scales = "free_y") +
+  labs(x = "Year",
+       y = "Life Expectancy",
+       color = "Income Group",
+       title = "Life Expectancy by Income Group") 
+hyp1income
+```
+
+# Hypothesis 2: Prevalence of Undernourishment and Communicable Disease on Life Expectancy
+Factoring by Life Expectancy
+```{r}
+hyp2 <- ggplot(life, aes(x = Prevelance.of.Undernourishment, y = Communicable, color = Life.Expectancy.World.Bank)) +
+  geom_point() +
+  labs(x = "Prevalence of Undernourishment",
+       y = "Communicable Disease",
+       title = "Malnourishment and Communicable Dieseases vs. Life Expectancy",
+       color = "Life Expectancy")
+hyp2
+```
+
+Factoring by Region
+```{r}
+hyp2region <- ggplot(life, aes(x = Prevelance.of.Undernourishment, y = Communicable, color = Region)) +
+  geom_point() +
+  labs(x = "Prevalence of Undernourishment",
+       y = "Communicable Disease",
+       title = "Malnourishment and Communicable Dieseases vs. Global Region",
+       color = "Region")
+hyp2region
+```
+
+# Hypothesis 3: Impact of Disability-Adjusted Life Years and Unemployment Rate on Life Expectancy
+```{r}
+hyp3 <- ggplot(life, aes(x = Unemployment, y = Injuries, color = Life.Expectancy.World.Bank)) +
+  geom_point() +
+  labs(x = "Unemployment Rate",
+       y = "Disability Adjusted Life Years (DALYs)",
+       title = "DALY's and Unemployment",
+       color = "Life Expectancy")
+hyp3
+```
+
+# Hypothesis 4: Increase in CO2 Emissions and its Effect on Life Expectancy 
+We also take a look at which regions in general are the ones with the highest CO2 emissions
+```{r}
+hyp4 <- ggplot(life, aes(x = CO2, y = Life.Expectancy.World.Bank, color = Region)) +
+  geom_point() +
+  labs(x = "CO2 Emissions",
+       y = "Life Expectancy",
+       title = "CO2 Emissions and Life Expectancy, by Region",
+       color = "World Region")
+hyp4
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
